@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="PubApp.Views.CustomControls.SearchBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PubApp.Views.CustomControls"
+             mc:Ignorable="d"
+             x:Name="This">
+
+    <UserControl.Resources>
+        <local:BoolVisibilityConverter x:Key="BoolVisibilityConverter"></local:BoolVisibilityConverter>
+
+        <Style x:Key="StyleTextBox" TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+
+            <!--<Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid>
+                            <TextBox x:Name="TextBoxInput" 
+                                     BorderThickness="0"
+                                     VerticalAlignment="Center"/>
+                            <TextBlock Text="Search Drinks"
+                                       VerticalAlignment="Center"
+                                       >
+                                <TextBlock.Visibility>
+                                    <MultiBinding Converter="{StaticResource BoolVisibilityConverter}">
+                                        <Binding ElementName="TextBoxInput" Path="Text"/>
+                                        <Binding ElementName="TextBoxInput" Path="IsFocused"/>
+                                    </MultiBinding>
+                                </TextBlock.Visibility>
+                            </TextBlock>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>-->
+        </Style>
+
+        <Style x:Key="StyleImage" TargetType="Image">
+            <Setter Property="Source" Value="../../Images/search_24px.png"/>
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}, Path=IsMouseOver}" Value="True">
+                    <Setter Property="Source" Value="../../Images/search_24px-over.png"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="StyleButton"
+               TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderThickness="0"
+                                CornerRadius="12"
+                                Background="#211D1E"
+                                Width="40">
+                            <Image x:Name="Image" Style="{StaticResource StyleImage}"
+                                   Stretch="None"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="StyleSearchBox"
+               TargetType="{x:Type TextBox}">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border Background="{Binding Background, ElementName=This, FallbackValue=White, TargetNullValue=White}"
+                                BorderThickness="0"
+                                CornerRadius="12">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox Grid.Column="0"
+                                         Style="{StaticResource StyleTextBox}"
+                                         Text="{Binding Text, ElementName=This, FallbackValue=Search Drinks, TargetNullValue=Search Drinks }"
+                                         Margin="10, 5"/>
+
+                                <Button Grid.Column="1"
+                                        Style="{StaticResource StyleButton}"
+                                        Margin="2"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+
+    <TextBox Style="{StaticResource StyleSearchBox}"/>
+   
+</UserControl>
