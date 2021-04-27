@@ -55,7 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\CustomControls\ListBoxItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CustomControls\MenuButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CustomControls\SearchBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -68,8 +80,17 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Views\CustomControls\BoolVisibilityConverter.cs" />
+    <Compile Include="Views\CustomControls\ListBoxItem.xaml.cs">
+      <DependentUpon>ListBoxItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomControls\MenuButton.xaml.cs">
+      <DependentUpon>MenuButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CustomControls\SearchBox.xaml.cs">
       <DependentUpon>SearchBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -112,6 +133,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\search_24px-over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\heart_24px.png" />
+    <Resource Include="Images\heart_24px_marked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\default_bottle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

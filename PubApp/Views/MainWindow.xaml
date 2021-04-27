@@ -4,31 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PubApp"
+        xmlns:views="clr-namespace:PubApp.Views"
         mc:Ignorable="d"
-        Title="Pub" Height="500" Width="750"
+        Title="Pub" Height="558" Width="840"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="#F9FAFF">
+    <Window.Resources>
+        <views:MainPage x:Key="MainPage"></views:MainPage>
+    </Window.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="5*"/>
-        </Grid.RowDefinitions>
-
-
-        <CustomControls:SearchBox Grid.Row="0"
-                                  Margin="20, 10"
-                                  Text="Search Drinks"/>
-        <StackPanel Grid.Row="1"
-                    Orientation="Vertical"
-                    Margin="20">
-            <TextBlock FontSize="26"
-                       FontWeight="Bold"
-                       Text="Drinks"/>
-            <TextBlock FontSize="26"
-                       FontWeight="Regular"
-                       Text="Collection"/>
-        </StackPanel>
+        <Frame x:Name="FrameMain" Content="{StaticResource ResourceKey=MainPage}"/>
     </Grid>
 </Window>

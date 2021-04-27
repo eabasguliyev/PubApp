@@ -1,0 +1,72 @@
+﻿<Page x:Class="PubApp.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PubApp.Views"
+      xmlns:customControls="clr-namespace:PubApp.Views.CustomControls"
+      mc:Ignorable="d" 
+      Height="520" Width="820"
+      Title="MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+
+        <customControls:SearchBox Grid.Row="0"
+                                  Margin="20, 10"/>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Vertical"
+                    Margin="22, 20">
+            <TextBlock FontSize="26"
+                       FontWeight="Bold"
+                       Text="Drinks"/>
+            <TextBlock FontSize="26"
+                       FontWeight="Regular"
+                       Text="Collection"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    Margin="22, 5">
+            <customControls:MenuButton Text="All"
+                                       GroupName="Menu"
+                                       IsSelected="True"/>
+            <customControls:MenuButton Text="Trending"
+                                       Margin="10, 0"
+                                       GroupName="Menu"/>
+        </StackPanel>
+
+        <ListBox Grid.Row="3" 
+                 x:Name="ListBoxDrinks"
+                 ScrollViewer.CanContentScroll="False"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 BorderThickness="0"
+                 Background="Transparent">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <customControls:ListBoxItem DrinkName="{Binding DrinkName}"
+                                                BottleSize="{Binding BottleSize}"
+                                                Price="{Binding Price}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <Label></Label>
+            <Label></Label>
+            <Label></Label>
+            <Label></Label>
+            <Label></Label>
+            <Label></Label>
+            <Label></Label>
+        </ListBox>
+    </Grid>
+</Page>

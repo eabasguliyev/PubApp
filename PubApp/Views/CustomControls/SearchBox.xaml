@@ -15,6 +15,7 @@
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Background" Value="Transparent"/>
 
+
             <!--<Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
@@ -73,9 +74,12 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Border Background="{Binding Background, ElementName=This, FallbackValue=White, TargetNullValue=White}"
-                                BorderThickness="0"
+                        <Border
+                            BorderThickness="0"
                                 CornerRadius="12">
+                            <Border.Background>
+                                <Binding Path="Background" FallbackValue="White" TargetNullValue="White" />
+                            </Border.Background>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="4*"/>
@@ -84,8 +88,11 @@
 
                                 <TextBox Grid.Column="0"
                                          Style="{StaticResource StyleTextBox}"
-                                         Text="{Binding Text, ElementName=This, FallbackValue=Search Drinks, TargetNullValue=Search Drinks }"
-                                         Margin="10, 5"/>
+                                         Margin="10, 5">
+                                    <TextBox.Text>
+                                        <Binding Path="Text" FallbackValue="Search Drinks" TargetNullValue="Search Drinks" />
+                                    </TextBox.Text>
+                                </TextBox>
 
                                 <Button Grid.Column="1"
                                         Style="{StaticResource StyleButton}"
