@@ -16,6 +16,67 @@
             <Setter Property="FontWeight" Value="DemiBold"/>
             <Setter Property="Margin" Value="5, 0, 0, 0"></Setter>
         </Style>
+
+        <Style x:Key="StyleFavoriteToggleButton" TargetType="ToggleButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Grid Background="Transparent">
+                            <Border Name="Border"
+                                    CornerRadius="15"
+                                    BorderThickness="1.3"
+                                    BorderBrush="#B4B5B6">
+                                <Image x:Name="FavoriteButtonImage"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Source="../Images/heart_48px.png"
+                                       Stretch="UniformToFill"
+                                       Height="40"
+                                       Width="40"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="FavoriteButtonImage"
+                                        Property="Source"
+                                        Value="../Images/heart_48px-marked.png"></Setter>
+                            </Trigger>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#F4F4F6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="StyleOrdinaryButton" TargetType="Button">
+            <Setter Property="Margin" Value="20, 0, 0, 0"></Setter>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Foreground" Value="#211D1E"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Background="Transparent">
+                            <Border Name="Border"
+                                    CornerRadius="18"
+                                    Background="#FFFFFF">
+                                <TextBlock VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Text="{TemplateBinding Content}"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#EEEFF4"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
 
     <Grid Background="#F9FAFF">
@@ -31,7 +92,11 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
-
+                <Image VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Source="../Images/default_bottle.png"
+                       Stretch="Uniform"
+                       RenderOptions.BitmapScalingMode="Fant"/>
             </Grid>
 
             <StackPanel Grid.Column="1"
@@ -107,7 +172,15 @@
                             Margin="50, 0"
                             Background="Transparent"
                             Height="80">
-                    
+                    <ToggleButton MinWidth="80" 
+                            Style="{StaticResource StyleFavoriteToggleButton}"/>
+
+                    <Button MinWidth="300"
+                            Content="Buy"
+                            Style="{StaticResource StyleOrdinaryButton}"/>
+                    <Button MinWidth="300"
+                            Content="Clear"
+                            Style="{StaticResource StyleOrdinaryButton}"/>
                 </StackPanel>
             </Border>
         </Grid>

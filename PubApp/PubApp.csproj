@@ -55,9 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Views\CustomControls\OrdinaryButton.xaml.cs">
-      <DependentUpon>OrdinaryButton.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\CustomControls\ToggleButtonCustom.xaml.cs">
       <DependentUpon>ToggleButtonCustom.xaml</DependentUpon>
     </Compile>
@@ -73,10 +70,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CustomControls\MenuButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CustomControls\OrdinaryButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,6 +160,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\search_24px-over2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\heart_48px-marked.png" />
+    <Resource Include="Images\heart_48px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
