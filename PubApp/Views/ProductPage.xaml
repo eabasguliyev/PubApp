@@ -1,0 +1,115 @@
+﻿<Page x:Class="PubApp.Views.ProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PubApp.Views"
+      xmlns:customControls="clr-namespace:PubApp.Views.CustomControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="520" d:DesignWidth="820"
+      Title="ProductPage">
+
+    <Page.Resources>
+        <Style x:Key="BaseStyleTextBlock" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment"
+                    Value="Center"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Margin" Value="5, 0, 0, 0"></Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#F9FAFF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="6*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+
+            </Grid>
+
+            <StackPanel Grid.Column="1"
+                        VerticalAlignment="Center">
+                <TextBlock FontSize="20"
+                           Foreground="#B4B5B6"
+                           Margin="10, 10, 0, 10"
+                           Text="STRONG"
+                           Style="{StaticResource BaseStyleTextBlock}"/>
+
+                <TextBlock FontSize="25"
+                           Foreground="#211D1E"
+                           Margin="10, 0, 0, 10"
+                           FontWeight="Bold"
+                           Text="Remy Martin"
+                           Style="{StaticResource BaseStyleTextBlock}"/>
+
+                <TextBox Text="$175"
+                         MaxWidth="100"
+                         Margin="10, 5, 0, 20"
+                         Height="40"
+                         FontSize="17"
+                         Style="{StaticResource StyleTextBlock}"
+                         HorizontalAlignment="Left"/>
+                <WrapPanel Orientation="Horizontal"
+                            Margin="0, 0, 0, 10"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <customControls:ToggleButtonCustom Width="100"
+                                                       Height="40"
+                                                       FontSize="17"
+                                                       Text="250ML"
+                                                       Margin="10, 0, 0, 0"
+                                                       IsSelected="True"
+                                                       GroupName="DrinkSize"/>
+                    <customControls:ToggleButtonCustom Width="100"
+                                                       Height="40"
+                                                       FontSize="17"
+                                                       Text="500ML"
+                                                       Margin="10, 0, 0,0"
+                                                       GroupName="DrinkSize"/>
+                    <customControls:ToggleButtonCustom Width="100"
+                                                       Height="40"
+                                                       FontSize="17"
+                                                       Text="500ML"
+                                                       Margin="10, 0, 0,0"
+                                                       GroupName="DrinkSize"/>
+                    <customControls:ToggleButtonCustom Width="100"
+                                                       Height="40"
+                                                       FontSize="17"
+                                                       Text="500ML"
+                                                       Margin="10, 0, 0,0"
+                                                       GroupName="DrinkSize"/>
+                    <customControls:ToggleButtonCustom Width="100"
+                                                       Height="40"
+                                                       FontSize="17"
+                                                       Text="500ML"
+                                                       Margin="10, 0, 0,0"
+                                                       GroupName="DrinkSize"/>
+                    <customControls:ToggleButtonCustom Width="100"
+                                                       Height="40"
+                                                       FontSize="17"
+                                                       Text="500ML"
+                                                       Margin="10, 0, 0,0"
+                                                       GroupName="DrinkSize"/>
+                </WrapPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Border CornerRadius="25"
+                    Background="#211D1E">
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            Margin="50, 0"
+                            Background="Transparent"
+                            Height="80">
+                    
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>

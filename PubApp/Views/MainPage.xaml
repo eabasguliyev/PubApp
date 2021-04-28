@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:PubApp.Views"
       xmlns:customControls="clr-namespace:PubApp.Views.CustomControls"
       mc:Ignorable="d" 
-      Height="520" Width="820"
+      d:DesignHeight="520" d:DesignWidth="820"
       Title="MainPage">
     <Grid>
         <Grid.RowDefinitions>
@@ -40,6 +40,9 @@
             <customControls:MenuButton Text="Trending"
                                        Margin="10, 0"
                                        GroupName="Menu"/>
+            <customControls:MenuButton Text="Favorites"
+                                       Margin="10, 0"
+                                       GroupName="Menu"/>
         </StackPanel>
 
         <ListBox Grid.Row="3" 
@@ -48,6 +51,11 @@
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  BorderThickness="0"
                  Background="Transparent">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Focusable" Value="False"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"/>
@@ -55,7 +63,8 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <customControls:ListBoxItem DrinkName="{Binding DrinkName}"
+                    <customControls:ListBoxItem x:Name="ListBoxItem"
+                                                DrinkName="{Binding DrinkName}"
                                                 BottleSize="{Binding BottleSize}"
                                                 Price="{Binding Price}"/>
                 </DataTemplate>
