@@ -12,18 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PubApp.ViewModels;
 
 namespace PubApp.Views
 {
     /// <summary>
-    /// Interaction logic for MainPage.xaml
+    /// Interaction logic for HistoryPageView.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class HistoryPageView : Page
     {
-        public MainPage()
+        public HistoryPageView()
         {
-            this.DataContext = new MainViewModel();
             InitializeComponent();
         }
     }

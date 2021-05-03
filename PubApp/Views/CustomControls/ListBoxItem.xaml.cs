@@ -12,8 +12,16 @@ namespace PubApp.Views.CustomControls
 
         public string DrinkName
         {
-            get { return (string)GetValue(DrinkNameProperty); }
-            set { SetValue(DrinkNameProperty, value); }
+            get
+            {
+                MessageBox.Show((string) GetValue(DrinkNameProperty));
+                return (string)GetValue(DrinkNameProperty);
+            }
+            set
+            {
+                MessageBox.Show((string)GetValue(DrinkNameProperty));
+                SetValue(DrinkNameProperty, value);
+            }
         }
 
         // Using a DependencyProperty as the backing store for DrinkName.  This enables animation, styling, binding, etc...
@@ -43,6 +51,19 @@ namespace PubApp.Views.CustomControls
         // Using a DependencyProperty as the backing store for Price.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PriceProperty =
             DependencyProperty.Register("Price", typeof(string), typeof(ListBoxItem));
+
+
+
+
+        public bool Favorite
+        {
+            get { return (bool)GetValue(FavoriteProperty); }
+            set { SetValue(FavoriteProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Favorite.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FavoriteProperty =
+            DependencyProperty.Register("Favorite", typeof(bool), typeof(ListBoxItem));
 
 
         public ListBoxItem()

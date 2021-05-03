@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PubApp.Views"
       xmlns:customControls="clr-namespace:PubApp.Views.CustomControls"
+      xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       d:DesignHeight="520" d:DesignWidth="820"
       Title="ProductPage">
@@ -18,6 +19,7 @@
         </Style>
 
         <Style x:Key="StyleFavoriteToggleButton" TargetType="ToggleButton">
+            <Setter Property="Command" Value="{Binding ChangeFavoriteStatusCommand}"></Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -104,26 +106,73 @@
                 <TextBlock FontSize="20"
                            Foreground="#B4B5B6"
                            Margin="10, 10, 0, 10"
-                           Text="STRONG"
+                           Text="{Binding Drink.Hardness}"
                            Style="{StaticResource BaseStyleTextBlock}"/>
 
                 <TextBlock FontSize="25"
                            Foreground="#211D1E"
                            Margin="10, 0, 0, 10"
                            FontWeight="Bold"
-                           Text="Remy Martin"
+                           Text="{Binding Drink.Name}"
                            Style="{StaticResource BaseStyleTextBlock}"/>
 
-                <TextBox Text="$175"
-                         MaxWidth="100"
+                <TextBox Text="{Binding Drink.Price}" MaxWidth="100"
                          Margin="10, 5, 0, 20"
                          Height="40"
                          FontSize="17"
                          Style="{StaticResource StyleTextBlock}"
-                         HorizontalAlignment="Left"/>
-                <WrapPanel Orientation="Horizontal"
-                            Margin="0, 0, 0, 10"
-                            ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                         HorizontalAlignment="Left">
+                </TextBox>
+
+                <ListBox x:Name="ListBoxSizes"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         ItemsSource="{Binding Drink.Sizes}">
+
+                    <!--<ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="Background"
+                                    Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                        <Border BorderBrush="Transparent"
+                                                BorderThickness="0"
+                                                Background="{TemplateBinding Background}">
+                                            <ContentPresenter/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>-->
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Margin="0, 0, 0, 10"
+                                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <customControls:ToggleButtonCustom Width="100"
+                                                               Height="40"
+                                                               Text="{Binding}"
+                                                               FontSize="17"
+                                                               Margin="10, 0, 0, 0"
+                                                               GroupName="DrinkSize">
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="MouseDown" >
+                                        <b:InvokeCommandAction Command="{Binding ListboxItemClickCommand}"
+                                                               CommandParameter="{Binding ElementName=ListBoxSizes, Path=SelectedItem}"/>
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
+                            </customControls:ToggleButtonCustom>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <!--<WrapPanel Orientation="Horizontal"
+                           >
                     <customControls:ToggleButtonCustom Width="100"
                                                        Height="40"
                                                        FontSize="17"
@@ -161,7 +210,11 @@
                                                        Text="500ML"
                                                        Margin="10, 0, 0,0"
                                                        GroupName="DrinkSize"/>
-                </WrapPanel>
+                </WrapPanel>-->
+
+                <customControls:CustomQuantityControl x:Name="QuantityControl" 
+                                                      HorizontalAlignment="Left"
+                                                      Margin="10, 0, 0, 0"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
@@ -173,11 +226,14 @@
                             Background="Transparent"
                             Height="80">
                     <ToggleButton MinWidth="80" 
-                            Style="{StaticResource StyleFavoriteToggleButton}"/>
+                            Style="{StaticResource StyleFavoriteToggleButton}"
+                            Command="{Binding ChangeFavoriteStatusCommand}"
+                            IsChecked="{Binding Drink.Favorite}"/>
 
                     <Button MinWidth="300"
                             Content="Buy"
-                            Style="{StaticResource StyleOrdinaryButton}"/>
+                            Style="{StaticResource StyleOrdinaryButton}"
+                            Command="{Binding BuyDrinkCommand}" CommandParameter="{Binding ElementName=QuantityControl, Path=DataContext.Quantity}"/>
                     <Button MinWidth="300"
                             Content="Clear"
                             Style="{StaticResource StyleOrdinaryButton}"/>

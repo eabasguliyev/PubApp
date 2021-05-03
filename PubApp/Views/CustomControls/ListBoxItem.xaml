@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:PubApp.Views.CustomControls"
              mc:Ignorable="d" 
              Width="190"
-             Height="240">
+             Height="240"
+             x:Name="This">
     <UserControl.Resources>
         <Style x:Key="StyleImageToggleButton" TargetType="{x:Type ToggleButton}">
             <Setter Property="Template">
@@ -64,13 +65,16 @@
                                        FontSize="16"
                                        FontWeight="Bold"
                                        Foreground="#211D1E"
-                                       Text="{Binding Price, ElementName=This, FallbackValue=$200, TargetNullValue=$200}"
                                        VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"/>
-                            <ToggleButton Grid.Column="1"
-                                          Style="{StaticResource StyleImageToggleButton}"
-                                          VerticalAlignment="Center"
-                                          HorizontalAlignment="Center"/>
+                                       HorizontalAlignment="Center">
+                                <Run Text="$"/>
+                                <Run Text="{Binding Price, ElementName=This}"/>
+                            </TextBlock>
+                                <ToggleButton Grid.Column="1"
+                                              Style="{StaticResource StyleImageToggleButton}"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              IsChecked="{Binding Favorite, ElementName=This}"/>
                         </Grid>
                     </Grid>
                 </Border>
@@ -79,15 +83,17 @@
 
         <StackPanel Grid.Row="1"
                     Orientation="Vertical">
-            <TextBlock Text="{Binding DrinkName, ElementName=This, FallbackValue=Korbel Baundy, TargetNullValue=Korbel Baundy}"
+            <TextBlock Text="{Binding DrinkName, ElementName=This}"
                        HorizontalAlignment="Center"
                        FontSize="15"
                        FontWeight="DemiBold"
                        Foreground="#211D1E"/>
-            <TextBlock Text="{Binding BottleSize, ElementName=This, FallbackValue=750ML, TargetNullValue=750ML}"
-                       HorizontalAlignment="Center"
+            <TextBlock HorizontalAlignment="Center"
                        FontSize="13"
-                       Foreground="#B4B5B6"/>
+                       Foreground="#B4B5B6">
+                    <Run Text="{Binding BottleSize, ElementName=This}"/>
+                    <Run Text="ML"/>
+            </TextBlock>
         </StackPanel>
     </Grid>
 </UserControl>

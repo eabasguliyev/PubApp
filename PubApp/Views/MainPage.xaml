@@ -4,11 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PubApp.Views"
+      xmlns:local2="clr-namespace:PubApp.ViewModels"
       xmlns:customControls="clr-namespace:PubApp.Views.CustomControls"
+      xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d" 
       d:DesignHeight="520" d:DesignWidth="820"
       Title="MainPage">
-    <Grid>
+
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -50,12 +53,14 @@
                  ScrollViewer.CanContentScroll="False"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  BorderThickness="0"
-                 Background="Transparent">
-            <ListBox.ItemContainerStyle>
+                 Background="Transparent"
+                 ItemsSource="{Binding Drinks}">
+           
+            <!--<ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Focusable" Value="False"/>
                 </Style>
-            </ListBox.ItemContainerStyle>
+            </ListBox.ItemContainerStyle>-->
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"/>
@@ -64,18 +69,46 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <customControls:ListBoxItem x:Name="ListBoxItem"
-                                                DrinkName="{Binding DrinkName}"
-                                                BottleSize="{Binding BottleSize}"
-                                                Price="{Binding Price}"/>
+                                                DrinkName="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                BottleSize="{Binding Sizes[0]}"
+                                                Price="{Binding Price}"
+                                                Favorite="{Binding Favorite}"/>
+                    <!--<TextBlock FontSize="16" Text="{Binding Name}"/>-->
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            <Label></Label>
-            <Label></Label>
-            <Label></Label>
-            <Label></Label>
-            <Label></Label>
-            <Label></Label>
-            <Label></Label>
+            <b:Interaction.Triggers>
+                <b:EventTrigger EventName="MouseDoubleClick">
+                    <b:InvokeCommandAction Command="{Binding ListBoxItemClickCommand}" 
+                                           CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=ListBox}, Path=SelectedItem}"/>
+                </b:EventTrigger>
+            </b:Interaction.Triggers>
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Background"
+                            Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <Border x:Name="Border"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter/>
+                                </Border>
+
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Border" Property="BorderBrush" Value="#141414"/>
+                                        <Setter TargetName="Border" Property="BorderThickness" Value="0"/>
+                                        <Setter TargetName="Border" Property="Background" Value="#EBEBEB"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
         </ListBox>
     </Grid>
 </Page>

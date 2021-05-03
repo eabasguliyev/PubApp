@@ -6,16 +6,46 @@
         xmlns:local="clr-namespace:PubApp"
         xmlns:views="clr-namespace:PubApp.Views"
         mc:Ignorable="d"
-        Title="Pub" Height="558" Width="840"
+        Title="Pub" Height="608" Width="840"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="#F9FAFF">
     <Window.Resources>
         <views:MainPage x:Key="MainPage"/>
         <views:ProductPage x:Key="ProductPage"/>
+        <views:ListEmptyVisibilityConverter x:Key="ListEmptyVisibilityConverter"/>
     </Window.Resources>
-    <Grid>
-        <!--<Frame x:Name="FrameMain" Content="{StaticResource ResourceKey=MainPage}"/>-->
-        <Frame x:Name="FrameMain" Content="{StaticResource ResourceKey=ProductPage}"/>
+    <Grid Background="White">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Canvas Grid.Row="0">
+            <Button Height="40"
+                    Width="100"
+                    FontSize="20"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Margin="10, 5"
+                    Content="Back"
+                    Command="{Binding BackCommand}"
+                    Visibility="{Binding LastPageCounter, Converter={StaticResource ListEmptyVisibilityConverter}}">
+            </Button>
+
+            <Button Height="40"
+                    Width="100"
+                    FontSize="20"
+                    Canvas.Right="0"
+                    Margin="10, 5"
+                    Content="History"
+                    Command="{Binding ShowHistoryCommand}"/>
+        </Canvas>
+        <Frame Grid.Row="1" 
+               x:Name="FrameMain" 
+               Content="{Binding Page}"
+               NavigationUIVisibility="Hidden"/>
+        <!--<Frame x:Name="FrameMain" Content="{StaticResource ResourceKey=ProductPage}"/>-->
     </Grid>
 </Window>

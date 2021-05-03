@@ -14,16 +14,16 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PubApp.ViewModels;
 
-namespace PubApp.Views
+namespace PubApp.Views.CustomControls
 {
     /// <summary>
-    /// Interaction logic for MainPage.xaml
+    /// Interaction logic for CustomQuantityControl.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class CustomQuantityControl : UserControl
     {
-        public MainPage()
+        public CustomQuantityControl()
         {
-            this.DataContext = new MainViewModel();
+            this.DataContext = new CustomQuantityControlViewModel();
             InitializeComponent();
         }
     }

@@ -1,0 +1,26 @@
+﻿<Page x:Class="PubApp.Views.HistoryPageView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PubApp.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="520" d:DesignWidth="820"
+      Title="HistoryPageView">
+
+    <Grid Background="White">
+        <ListBox Margin="20"
+                 ItemsSource="{Binding DrinkBills}"
+                 BorderThickness="0"
+                 Background="Transparent">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock FontSize="25">
+                        <Run Text="Cost: "/>
+                        <Run Text="{Binding Cost}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>
