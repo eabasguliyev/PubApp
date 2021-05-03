@@ -75,7 +75,7 @@ namespace PubApp.ViewModels
                 },
             };
 
-            AddCurrentPageCommand.Execute(MainPage); 
+            AddCurrentPageCommand.Execute(null); 
 
             ChangePageCommand.Execute(productPage);
         }

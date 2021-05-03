@@ -8,7 +8,7 @@
       d:DesignHeight="520" d:DesignWidth="820"
       Title="HistoryPageView">
 
-    <Grid Background="White">
+    <Grid Background="#F9FAFF">
         <ListBox Margin="20"
                  ItemsSource="{Binding DrinkBills}"
                  BorderThickness="0"
@@ -16,6 +16,15 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock FontSize="25">
+                        <Run Text="Drink: "/>
+                        <Run Text="{Binding Drink.Name}"/>
+                        <LineBreak/>
+                        <Run Text="Quantity: "/>
+                        <Run Text="{Binding Quantity}"/>
+                        <LineBreak/>
+                        <Run Text="Price: "/>
+                        <Run Text="{Binding Drink.Price}"/>
+                        <LineBreak/>
                         <Run Text="Cost: "/>
                         <Run Text="{Binding Cost}"/>
                     </TextBlock>

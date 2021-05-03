@@ -15,7 +15,7 @@
         <views:ProductPage x:Key="ProductPage"/>
         <views:ListEmptyVisibilityConverter x:Key="ListEmptyVisibilityConverter"/>
     </Window.Resources>
-    <Grid Background="White">
+    <Grid>
         
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -32,6 +32,29 @@
                     Content="Back"
                     Command="{Binding BackCommand}"
                     Visibility="{Binding LastPageCounter, Converter={StaticResource ListEmptyVisibilityConverter}}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Foreground" Value="#B4B5B6"></Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="Border" CornerRadius="15"
+                                            BorderThickness="0"
+                                            Background="#211D1E">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                          HorizontalAlignment="Center"/>
+                                    </Border>
+
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="#FFE8E89D"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
             </Button>
 
             <Button Height="40"
@@ -40,7 +63,29 @@
                     Canvas.Right="0"
                     Margin="10, 5"
                     Content="History"
-                    Command="{Binding ShowHistoryCommand}"/>
+                    Command="{Binding ShowHistoryCommand}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border CornerRadius="15"
+                                            BorderThickness="0"
+                                            Background="#211D1E">
+                                        <Image x:Name="Image" Source="../Images/activity_history_50px.png"/>
+                                    </Border>
+
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Image" Property="Source" Value="../Images/activity_history_over_50px.png"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Canvas>
         <Frame Grid.Row="1" 
                x:Name="FrameMain" 

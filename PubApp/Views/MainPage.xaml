@@ -11,7 +11,7 @@
       d:DesignHeight="520" d:DesignWidth="820"
       Title="MainPage">
 
-    <Grid Background="White">
+    <Grid Background="#F9FAFF">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>

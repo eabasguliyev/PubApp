@@ -130,7 +130,7 @@
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                          ItemsSource="{Binding Drink.Sizes}">
 
-                    <!--<ListBox.ItemContainerStyle>
+                    <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <Setter Property="Background"
                                     Value="Transparent"/>
@@ -146,7 +146,7 @@
                                 </Setter.Value>
                             </Setter>
                         </Style>
-                    </ListBox.ItemContainerStyle>-->
+                    </ListBox.ItemContainerStyle>
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Margin="0, 0, 0, 10"

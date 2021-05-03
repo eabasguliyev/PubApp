@@ -169,7 +169,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\activity_history_50px.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\search_24px.png" />
   </ItemGroup>
@@ -189,6 +191,13 @@
   <ItemGroup>
     <Resource Include="Images\heart_48px-marked.png" />
     <Resource Include="Images\heart_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\activity_history_over_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\back_to_30px.png" />
+    <Resource Include="Images\back_to_over_30px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

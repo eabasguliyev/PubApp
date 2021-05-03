@@ -86,13 +86,30 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBox Grid.Column="0"
-                                         Style="{StaticResource StyleTextBox}"
-                                         Margin="10, 5">
-                                    <TextBox.Text>
-                                        <Binding Path="Text" FallbackValue="Search Drinks" TargetNullValue="Search Drinks" />
-                                    </TextBox.Text>
-                                </TextBox>
+                                <Grid Grid.Column="0">
+                                    <TextBlock Text="Search Drinks" VerticalAlignment="Center"
+                                               Margin="10, 5"
+                                               FontSize="16">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Foreground" Value="DarkGray"></Setter>
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Text, ElementName=TextBox}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+
+                                    <TextBox x:Name="TextBox" Style="{StaticResource StyleTextBox}"
+                                             Margin="10, 5">
+                                        <TextBox.Text>
+                                            <Binding Path="Text" ElementName="This"/>
+                                        </TextBox.Text>
+                                    </TextBox>
+                                </Grid>
 
                                 <Button Grid.Column="1"
                                         Style="{StaticResource StyleButton}"

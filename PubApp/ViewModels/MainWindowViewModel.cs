@@ -61,7 +61,11 @@ namespace PubApp.ViewModels
                     }
                 };
 
+                AddCurrentPageCommand.Execute(null);
                 ChangePage(historyPage);
+            }, o =>
+            {
+                return !(Page is HistoryPageView);
             });
 
             BackCommand = new RelayCommand((object param) =>
@@ -81,7 +85,7 @@ namespace PubApp.ViewModels
 
             AddCurrentPageCommand = new RelayCommand((object param) =>
             {
-                LastPages.Add(param as Page);
+                LastPages.Add(Page);
                 LastPageCounter++;
             });
 

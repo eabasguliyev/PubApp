@@ -39,7 +39,7 @@ namespace PubApp.ViewModels
             {
                 Drink = Drink,
                 Size = DrinkSize,
-                Count = itemCount,
+                Quantity = itemCount,
                 Cost = Drink.Price*itemCount,
             };
         }
